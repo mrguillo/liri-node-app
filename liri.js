@@ -4,21 +4,17 @@ require("dotenv").config();
 // code required to import the `keys.js` file and store it in a variable.
 var keys = require("./keys.js");
 
-// access keys information 
-// var spotify = new Spotify(keys.spotify);
-
 // Node module imports needed to run the functions
     var fs = require("fs"); //reads and writes files
-    var request = require("request");
-    var Spotify = require('node-spotify-api');
+    // var request = require("request");
+	var Spotify = require('node-spotify-api');
+	var spotify = new Spotify(keys.spotify);
     var liriArgument = process.argv[2];
     var userINPUT = process.argv[3];
 
-    // Node module imports needed to run moments npm
-    var moment = require('moment');
-    moment().format();
-
-
+    // // Node module imports needed to run moments npm
+    // var moment = require('moment');
+    // moment().format();
 
 //=================================================================
 // Possible commands for this liri app
@@ -41,13 +37,11 @@ var keys = require("./keys.js");
 // Spotify function, Spotify api
 
     function spotifyThisSong() {
-        var spotify = new Spotify(keys.spotify);
-        var songName = userINPUT;
+		var songName = '';
         var space = "\n" + "\n" +"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
         if(!songName){
             SongName = "What's my age again";
         }
-
         params = songName;
         spotify.search({ type: 'track', query: params }, function(err, data) {
             if ( err ) {
