@@ -1,4 +1,6 @@
+//=================================================================
 // code to read and set any environment variables with the dotenv package:
+
 require("dotenv").config();
 
 // Node module imports needed to run the functions
@@ -35,7 +37,7 @@ switch (liriArgument) {
 			"\n OPTION: 1. concert-this 'any band name' " +
 			"\n OPTION: 2. spotify-this-song 'any song name' " +
 			"\n OPTION: 3. movie-this 'any movie name' " +
-			"\n OPTION: 4. do-what-it-says." + "\n\n" +
+			"\n OPTION: 4. do-what-it-says" + "\n\n" +
 			"\n**********\nBe sure to put the movie, band or song name in quotation \nmarks if it's more than one word.\n**********\n\n\n");
 }
 
@@ -173,7 +175,6 @@ function movieThis() {
 	}
 	axios.get(queryUrl).then(
 			function (response) {
-				console.log(response.data.Ratings);
 				var space = "\n" + "\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
 				var movieResults = " ===================== LIRI PROVIDED THIS DATA FOR YOU...====================\n" +
 					space + "Title: " + response.data.Title +
@@ -227,7 +228,7 @@ function doWhatItSays() {
 	fs.readFile("random.txt", 'utf8', function (error, data) {
 		if (error) throw error;
 		loggedTxt = data.split(',');
-		console.log(loggedTxt);
+		console.log('Grabbig text from random.txt ' + loggedTxt);
 
 		var command;
 		var parameter;
